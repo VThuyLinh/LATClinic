@@ -1,0 +1,29 @@
+{% extends 'layout/base.html'%}
+{% block content %}
+<span>
+<table border="1">
+    <tr>
+        <th>STT</th>
+        <th>Tên thuốc</th>
+        <th>Đơn vị</th>
+        <th>Số lượng thuốc còn lại</th>
+        <th>Cách dùng</th>
+    </tr>
+    {% for c in Thuoc%}
+    <tr>
+        <td>{{c.id_Thuoc}}</td>
+        <td>{{c.TenThuoc}}</td>
+        {%for a in DonViThuoc%}
+        {%if c.id_DVT == a.id_DVT%}
+        <td>{{a.TenDonVi}}</td>
+        {% endif %}
+        {% endfor %}
+
+
+        <td>{{c.SoLuong}}</td>
+        <td>{{c.CachDung}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</span>
+{% endblock %}

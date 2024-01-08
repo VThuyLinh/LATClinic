@@ -1,0 +1,29 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+<span class="container row">
+  <span class="col-sm-6 col-md-6 table-cell">
+<h1 class="text-left ">Đăng nhập người dùng</h1>
+    {% if err_msg %}
+<div class="alert alert-danger">
+  {{err_msg}}
+</div>
+{% endif %}
+<form method="post" action="?next=/">
+  <div class="mb-3 mt-3">
+    <label for="phone" class="form-label">SĐT:</label>
+    <input pattern="[0]{1}[0-9]{9}" type="text" class="form-control" id="phone" name="username" placeholder="SĐT">
+  </div>
+  <div class="mb-3">
+    <label for="pwd" class="form-label">Mật khẩu:</label>
+    <input type="password" class="form-control" id="pwd" name="password" placeholder="Nhập mật khẩu">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Đăng nhập</button>
+
+</form>
+  </span>
+  <span class=" col-sm-6 col-md-6 table-celll">
+    <img src="https://afamilycdn.com/2018/9/5/photo-2-1536138583568288906482.jpg">
+  </span>
+  </span>
+{%endblock%}

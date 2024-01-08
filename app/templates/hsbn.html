@@ -1,0 +1,37 @@
+{% extends 'layout/base.html'%}
+{% block content %}
+<span>
+<table border="1">
+    <tr>
+        <th>STT</th>
+        <th>Mã số bệnh nhân</th>
+        <th>Họ tên bệnh nhân</th>
+        <th>Chuẩn đoán bệnh</th>
+        <th>Ghi chú</th>
+        <th>Mã phiếu khám từng khám bệnh</th>
+    </tr>
+
+    {% for p in HoSoBenhNhan%}
+    <tr>
+        <td>{{p.id_HSBN}}</td>
+            <td>{{p.id_BN}}</td>
+            {%for b in NguoiDung %}
+                {% if b.id== p.id_BN%}
+                    <td>{{b.HoTen}}</td>
+                {%endif%}
+            {% endfor %}
+
+            {%for k in PhieuKham%}
+                {% if k.id_PK == p.id_PhieuKham%}
+                    <td>{{k.ChuanDoanBenh}}</td>
+                {%endif%}
+            {%endfor%}
+
+            <td>{{p.GhiChu}}</td>
+            <td>{{p.id_PhieuKham}}</td>
+
+    </tr>
+ {% endfor %}
+</table>
+</span>
+{% endblock %}

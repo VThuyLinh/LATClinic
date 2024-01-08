@@ -1,0 +1,90 @@
+<nav class="navbar navbar-expand-sm navbar-dark" id="logo">
+    <div class="container-fluid ">
+        <div class="logo">
+            <img src="https://img.upanh.tv/2024/01/04/2024-01-041890096bac6320c2.png" class="rounded-circle" alt="Logo">
+            <a class="navbar-brand" href="#">LAT CLINIC</a>
+        </div>
+    </div>
+    <div class="text">
+        <p>Chuyên nghiệp, tận tâm, hiện đại</p>
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand-sm ">
+
+    <div class="container-fluid " id="color">
+        <!-- Links -->
+        <ul class="navbar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/introduce">Giới thiệu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/banggia">Bảng giá</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dichvu">Dịch vụ</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            {% if current_user.VaiTro.value == 1%}
+            <li class="nav-item">
+                <a class="nav-link" href="#">Xem thông tin cá nhân </a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="#">Thanh toán hóa đơn</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/bookschedule">Đăng kí khám </a>
+            </li>
+            {%endif%}
+
+            {% if current_user.VaiTro.value == 3%}
+            <li class="nav-item">
+                <a class="nav-link" href="/lapphieukham">Lập phiếu khám</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="/findmedicine">Tra cứu thuốc</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/hosobenhnhan">Tra cứu hồ sơ bệnh nhân</a>
+            </li>
+            {% endif %}
+            {% if current_user.VaiTro.value == 2%}
+            <li class="nav-item">
+                <a class="nav-link" href="#">Tạo danh sách khám</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/bookschedule">Đăng kí khám </a>
+            </li>
+            {% endif %}
+            {% if current_user.VaiTro.value == 5%}
+            <li class="nav-item">
+                <a class="nav-link" href="#">Thanh toán</a>
+            </li>
+            {% endif %}
+            {% endif %}
+        </ul>
+    </div>
+
+    <form class="d-flex ">
+        <input class="form-controll me-2" type="text" placeholder="Search">
+        <button class="btn btn-dark" type="button"><i aria-hidden="true" class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </form>
+    <div class="col-sm">
+        {% if current_user.is_authenticated %}
+        <p>Xin chào {{current_user.HoTen}}</p>
+        <a class="new" href="/logout"><span class="rounded-pilli nav-link">Đăng xuất</span></a>
+        {% else %}
+        <a class="new" href="/login"><span class="rounded-pilli nav-link ">Đăng Nhập</span></a>
+        <a class="new" href="/register"><span class="rounded-pilli nav-link ">Đăng Ký</span></a>
+        {% endif %}
+    </div>
+
+
+</nav>
+
+

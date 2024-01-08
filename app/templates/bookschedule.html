@@ -1,0 +1,87 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+
+{% if current_user.VaiTro.value==1 or current_user.VaiTro.value==2 %}
+{% if err_msg %}
+<div class="alert alert-success">
+    <a href="/login" class="alert-link">{{err_msg}}</a>.
+</div>
+{% endif %}
+<form action="" , method="POST">
+    {% if current_user.VaiTro.value== 2%}
+    <div class="mb-3 mt-3">
+        <label class="form-label">Tên y tá:</label>
+        <input type="text" class="form-control" value="{{current_user.HoTen}}" name="HoTen">
+    </div>
+    {% endif %}
+    <div class="mb-3">
+        <label class="form-label">SĐT:</label>
+        <input pattern="[0]{1}[0-9]{9}" type="text" class="form-control" id="sdt" value="{{current_user.username_sdt}}"
+               name="sdt">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Năm sinh:</label>
+        <input pattern="[0-9]{4}" type="text" class="form-control" id="NamSinh" value="{{current_user.NamSinh}}"
+               name="NamSinh">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Địa chỉ:</label>
+        <input type="text" class="form-control" id="DiaChi" value="{{current_user.DiaChi}}"
+               name="DiaChi">
+    </div>
+
+    <div class="mb-3" id="GioiTinh">
+         {% if current_user.GioiTinh=="Nam"%}
+    <div class="form-check" >
+        <input type="radio" class="form-check-input" name="GT" value="Nam" checked>Nam
+        <label class="form-check-label"></label>
+    </div>
+    <div class="form-check">
+        <input type="radio" class="form-check-input" name="GT" value="Nu">Nu
+        <label class="form-check-label" ></label>
+    </div>
+     {% endif %}
+        {% if current_user.GioiTinh=="Nu"%}
+    <div class="form-check" >
+        <input type="radio" class="form-check-input" name="GT" value="Nam" >Nam
+        <label class="form-check-label"></label>
+    </div>
+    <div class="form-check">
+        <input type="radio" class="form-check-input" name="GT" value="Nu"checked>Nu
+        <label class="form-check-label" ></label>
+    </div>
+     {% endif %}
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Tên bệnh nhân:</label>
+        <input type="text" class="form-control" id="HoTen" value="{{current_user.HoTen}}" name="HoTen">
+    </div>
+
+    <label class="form-label">Dịch vụ khám:</label>
+    <div class="mb-3">
+        <select name="DVKham" id="DVKham">
+            <option value="Nội khoa">Nội khoa</option>
+            <option value="Nhi khoa">Nhi khoa</option>
+            <option value="Ngoại khoa">Ngoại khoa</option>
+            <option value="Chăm sóc sức khỏe">Chăm sóc sức khỏe</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Ngày khám</label>
+        <input type="datetime-local" class="form-control " id="NgayKham" name="NgayKham">
+    </div>
+    <div class="form-check mb-3">
+        <label>Triệu chứng:</label>
+        <textarea class="form-control" rows="5" id="TrieuChung" name="TrieuChung"></textarea>
+    </div>
+    <button onclick="add_booking()" type="button" class="btnn btn-primary">Đặt lịch khám</button>
+</form>
+{% endif %}
+<div class="alert alert-success success" style="display:none">
+  Đăng kí khám thành công
+</div>
+<div class="alert alert-danger error" style="display:none">
+  Đăng kí khám không thành công
+</div>
+
+{% endblock %}

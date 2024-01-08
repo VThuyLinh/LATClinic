@@ -1,0 +1,238 @@
+.service .icon {
+    display: inline-block;
+    padding: 45px;
+    background: #D3D3D3;
+    border-radius: 50%;
+    transition: all .5s;
+}
+img, svg {
+    vertical-align: middle;
+    width: 150px;
+}
+.service.Nhi {
+    width:150px
+}
+.rounded-circle {
+    border-radius: 20%!important;
+}
+.logo > img {
+
+width:5rem
+}
+.logo > a {
+    letter-spacing:0.4rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.navbar-dark .navbar-brand {
+   color:black;
+   text-align:center;
+
+}
+
+#logo {
+   background-color:#D3D3D3
+}
+#logo>img{
+width:8rem;
+}
+
+.rounded-pilli{
+    border-radius:50px;
+    width:9rem;
+    margin:0.5rem;
+    background-color:#FF8C00;
+    color:black;
+    text-align:center;
+}
+.new{
+text-decoration:none;
+}
+.nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    color: black;
+    font-size:1.5rem;
+}
+.nameService {
+    color:black;
+    text-decoration:none;
+    margin-left: 3.5rem;
+    margin-top:0.5rem;
+}
+
+.nameServicee {
+    color:black;
+    text-decoration:none;
+    margin-top:0.5rem;
+}
+.nameServicee > a {
+    color:black;
+    text-decoration:none;
+
+}
+.nameServiceee {
+    color:black;
+    text-decoration:none;
+    margin-top:0.5rem;
+}
+.nameServiceee > a {
+    color:black;
+    text-decoration:none;
+    margin-left: 01rem;
+
+}
+.nameServiceeee > a {
+    color:black;
+    text-decoration:none;
+    margin-left: 2.5rem;
+
+}
+.nameService > a{
+   color: black;
+    text-decoration: none;
+
+}
+.card-title{
+    text-align:center;
+}
+.card {
+    padding:10px;
+    margin:10px;
+}
+.listInfo > li {
+    font-size:1.5rem;
+    padding-left:3rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid #c1bdb6;
+}
+
+.contact {
+    margin-top:5rem;
+}
+footer{
+margin-top:2rem;
+}
+#social-top{
+text-align:center;
+background-color:#E6E6FA
+}
+.end > li{
+list-style:none;
+}
+.text-left{
+    margin-left:8rem;
+    color:orange;
+}
+.form-label{
+background-color:#FFE4E1;
+border-radius:1.5rem;
+font-size:1.0rem;
+width:45rem;
+padding:0.8rem;
+font-weight:700;
+}
+.form-control{
+border-radius:1.5rem;
+font-size:1.0rem;
+width:45rem;
+padding:0.8rem;
+}
+.form-controll{
+width:18rem;
+}
+.btnn {
+    width: 9rem;
+    margin-left: 15rem;
+    margin-top:0.8rem;
+    font-size: 1.5rem;
+}
+.table-cell>img{
+width:30rem;
+margin-bottom:3rem;
+margin-top:0.5rem;
+
+}
+.table-celll>img{
+width:30rem;
+margin-bottom:3rem;
+margin-top:0.5rem;
+margin-left:12rem;
+}
+.text >p {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-right: 20rem;
+    width: 30rem;
+    letter-spacing: 5px;
+}
+.search{
+    width:30px;
+    list-style:none;
+
+
+}
+
+.iconsearch{
+    border-radius:2rem;
+}
+
+#tk{
+padding-bottom:3px;
+}
+
+.choice{
+width:89%;
+border-radius:1.5rem;
+}
+.login {
+
+    margin-left: 27rem;
+    margin-top: 6rem;
+}
+.loginbody{
+ background-color: rgb(240, 240, 240);
+}
+.muc{
+   width:30rem
+ font-size:1.5rem;
+ border:none;
+ border-radius:1rem;
+}
+.tieude{
+        padding: 10px;
+    margin-left: 4rem;
+    margin-top: 5rem;
+    color: rgb(255, 99, 71);
+    font-size: 2rem;
+}
+.hinh {
+    vertical-align: middle;
+    width: 75rem;
+}
+.tab > li{
+border:none;
+width:12rem;
+}
+
+.backToTop1 {
+display: none;
+position: fixed;
+  z-index: 1020;
+  right: 25px;
+  bottom: 25px;
+  width: 63px;
+  opacity:1;
+  height: 63px;
+  border-radius: 50%;
+  background: #1e76bd;
+  font-size: 18px;
+  line-height: 63px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s, bottom 0.75s ease-in-out;
+}

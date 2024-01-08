@@ -1,0 +1,80 @@
+{% extends 'layout/base.html'%}
+{% block content %}
+<form method="post">
+<span>
+    <label class="form-label">Họ tên:</label>
+    <input id="HoTen" type="text" class="form-control form-control-lg" placeholder="Họ tên bệnh nhân">
+   <label class="form-label">Ngày khám:</label>
+    <input  id="hvn" name="NgayKham" type=text class="form-control form-control-lg" >
+    <label class="form-label">Triệu chứng:</label>
+    <input id="TrieuChung" type="text" class="form-control form-control-lg" placeholder="Triệu chứng">
+    <label class="form-label">Dự đoán loại bệnh:</label>
+    <input id="LoaiBenh" type="text" class="form-control form-control-lg"
+          placeholder="Dự đoán loại bệnh" data-bs-toggle="modal" data-bs-target="#myModal" value="jjjjj">
+    <input id="lb" type="text" class="form-control form-control-lg"
+          placeholder="Dự đoán loại bệnh" data-bs-toggle="modal" data-bs-target="#myModal" value="jjjjj">
+
+  <!-- The XTMK -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="mb-3 mt-3">
+    		<label  class="form-label1">SĐT:</label>
+   			 <input pattern="[0]{1}[0-9]{9}" type="text" class="form-control" id="phone" name="username" placeholder="SĐT">
+ 		</div>
+  		<div class="mb-3">
+   			 <label class="form-label1">Mật khẩu:</label>
+    		<input type="password" class="form-control" id="pwd" name="password" placeholder="Nhập mật khẩu">
+  		</div>
+      	</div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button onclick="CheckMK()"  type="button" class="btn btn-primary" data-bs-dismiss="modal">Xác nhận</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+    <label class="form-label">Bác sĩ:</label>
+    <input id="BacSi" type="text" class="form-control form-control-lg" value="{{current_user.HoTen}}">
+</span>
+    <table id="node" class="table table-dark table-striped">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên thuốc</th>
+            <th>Đơn vị</th>
+            <th>Số lượng</th>
+            <th>Cách dùng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+        </tr>
+        </tbody>
+    </table>
+    </span>
+
+    <input type="button" onclick="Add()" value="Insert row">
+     <button onclick="add_PK()" type="button" class="btnn btn-primary">Lưu phiếu khám</button>
+        <div class="alert alert-success success" style="display:none">
+  Đăng kí khám thành công
+</div>
+<div class="alert alert-danger error" style="display:none">
+  Đăng kí khám không thành công
+</div>
+
+</form>
+
+{% endblock%}
