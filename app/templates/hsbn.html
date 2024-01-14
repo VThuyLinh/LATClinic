@@ -1,37 +1,32 @@
 {% extends 'layout/base.html'%}
 {% block content %}
 <span>
-<table border="1">
-    <tr>
-        <th>STT</th>
-        <th>Mã số bệnh nhân</th>
-        <th>Họ tên bệnh nhân</th>
-        <th>Chuẩn đoán bệnh</th>
-        <th>Ghi chú</th>
-        <th>Mã phiếu khám từng khám bệnh</th>
-    </tr>
+<<div class="scroll-box">
+         <table id="nodee" class="table table-dark table-striped">
+        <p>Phiếu khám</p>
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Mã bệnh nhân</th>
+            <th>Tên bệnh nhân</th>
+            <th>Ghi chú</th>
+            <th>Bệnh đã từng</th>
 
-    {% for p in HoSoBenhNhan%}
-    <tr>
-        <td>{{p.id_HSBN}}</td>
-            <td>{{p.id_BN}}</td>
-            {%for b in NguoiDung %}
-                {% if b.id== p.id_BN%}
-                    <td>{{b.HoTen}}</td>
-                {%endif%}
-            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for th in HoSoBenhNhan%}
+        <tr>
 
-            {%for k in PhieuKham%}
-                {% if k.id_PK == p.id_PhieuKham%}
-                    <td>{{k.ChuanDoanBenh}}</td>
-                {%endif%}
-            {%endfor%}
-
-            <td>{{p.GhiChu}}</td>
-            <td>{{p.id_PhieuKham}}</td>
-
-    </tr>
- {% endfor %}
-</table>
+            <td>{{loop.index}}</td>
+            <td>{{th.id_HSBN}}</td>
+            <td>{{th.HoTen}}</td>
+             <td>{{th.GhiChu}}</td>
+            <td>{{th.ChuanDoanBenh}}</td>
+        </tr>
+        {% endfor%}
+        </tbody>
+    </table>
+         </div>
 </span>
 {% endblock %}

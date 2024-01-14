@@ -1,0 +1,40 @@
+{% extends 'layout/base.html'%}
+{% block content %}
+ <aside class="ten">
+        <h1 class="titleTrajanBold titleUnderline" , style="text-align:center">HÓA ĐƠN THANH TOÁN</h1>
+    </aside>
+
+    <div class="container">
+        <form action="#">
+            <div class="main-user">
+                <div class="user-input">
+                    <lable for="name"><b>Họ tên: </b></lable>
+                    <input type="text" id="#" name="#">
+                </div>
+                 <div class="user-input">
+                    <lable for="name"><b>Ngày khám:</b> </lable>
+                    <input type="date" id="#" name="#">
+                </div>
+                 <div class="user-input">
+                    <lable for="name"><b>Tiền khám: </b></lable>
+                    <input onblur="TinhTien()" type="number" id="n1" name="tk" value="0">
+                </div>
+                 <div class="user-input">
+                    <lable for="name"><b>Tiền thuốc: </b></lable>
+                    <input onblur="TinhTien()" type="number" id="n2" name="tt" value="0">
+                </div>
+            </div>
+        </form>
+    </div>
+     <aside class="ten-id">
+        <div class="ten">
+            <input type="submit" class="#" value="Tổng tiền"/>
+                    <input  readonly type="text" id="tong" name="tongtien">
+        </div>
+    </aside>
+
+    <div class="submit">
+    <input type="submit" class="#" value="THANH TOÁN"/>
+    </div>
+
+{% endblock %}

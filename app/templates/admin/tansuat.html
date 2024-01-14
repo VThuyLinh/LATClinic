@@ -3,32 +3,33 @@
 {% block body %}
 <h1 class="text-center text-info">BÁO CÁO THỐNG KÊ</h1>
 
+
 <div class="row">
     <div class="col-md-5 col-xs-12">
         <table class="table">
             <tr>
                 <th>STT</th>
-                <th>Ngày</th>
-                <th>Số lượng bệnh nhân</th>
-                <th>Doanh thu</th>
-                <th>Tỷ lệ</th>
+                <th>Thuốc</th>
+                <th>Đơn vị tính</th>
+                <th>Số lượng</th>
+                <th>Số lần dùng</th>
             </tr>
-            {% for s in stats %}
+            {% for s in mon_stats %}
             <tr>
                 <td>{{ loop.index }}</td>
                 <td>{{ s[0] }}</td>
                 <td>{{ s[1] }}</td>
-                 <td>{{ s[2] }} VNĐ</td>
-                 <td>{{ '{:.2f}'.format(s[3]) }} %</td>
+                <td>{{ s[2] }}</td>
+                <td>{{ s[3] }}</td>
+
             </tr>
             {% endfor %}
         </table>
     </div>
     <div class="col-md-7 col-xs-12">
-        <canvas id="myChart"></canvas>
+        <canvas id="myChart2"></canvas>
     </div>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>

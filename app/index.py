@@ -1,11 +1,14 @@
 import math
+from itertools import groupby
 
 from flask import render_template, request, redirect, jsonify, session
 from flask_login import current_user
+from sqlalchemy import func
+
 from app.models import *
 import dao
 from app import app, login, admin
-
+import utils
 from flask_login import login_user, logout_user, login_required
 
 
@@ -15,7 +18,7 @@ def Home():
 
 
 @app.route('/login', methods=["get", "post"])
-def process_admin_login():
+def process_user_login():
     err_msg = None
     if request.method == 'POST':
         username = request.form.get('username')
@@ -35,9 +38,8 @@ def process_admin_login():
 def admin_login():
     username = request.form.get('username')
     password = request.form.get('password')
-
     user = dao.auth_user(username=username, password=password)
-    if user:
+    if user and username.__eq__(QuanTri.username_sdt):
         login_user(user=user)
 
     return redirect('/admin')
@@ -116,14 +118,55 @@ def banggia():
     return render_template("banggia.html")
 
 
+@app.route("/hoadon")
+def hoadon():
+    return render_template("hoadon.html")
+
+
 @app.route("/dichvu")
 def dichvu():
     return render_template("dichvu.html")
 
 
+@app.route('/api/luutamthoi', methods=["post"])
+def luutamthoi():
+    data = request.json
+
+    phieuKham = session.get("PhieuKham")
+
+    if phieuKham is None:
+        phieuKham = {}
+
+    HoTen = data.get("HoTen")
+    TrieuChung = data.get("TrieuChung")
+    LoaiBenh = data.get("LoaiBenh")
+    id = data.get("id")
+
+    phieuKham['thongTinKhamBenh'] = {
+        'tenBenhNhan': HoTen,
+        'trieuChung': TrieuChung,
+        'duDoanBenh': LoaiBenh
+    }
+
+    if phieuKham.get("cacLoaiThuoc") is None:
+        phieuKham["cacLoaiThuoc"] = {}
+
+    for i in id:
+        phieuKham["cacLoaiThuoc"][str(i)] = {
+            "tenThuoc": dao.get_Thuoc()[0][0].tenThuoc
+        }
+    session["PhieuKham"] = phieuKham
+
+    return utils.hien_phieu_tam_thoi(phieuKham)
+
+
 @app.route("/lapphieukham")
 def lappk():
-    return render_template("lapphieukham.html")
+    key = request.args.get('key')
+    hsbn = request.args.get('hsbn')
+    return render_template("lapphieukham.html", Thuoc=dao.get_Thuoc(key), DonViThuoc=dao.get_DonViThuoc(),
+                           NguoiDung=dao.get_NguoiDung(), PhieuKham=utils.hien_phieu_tam_thoi(session.get("PhieuKham")),
+                           HoSoBenhNhan=dao.get_HSBN(hsbn))
 
 
 @app.route('/api/lapphieukham', methods=['post'])
@@ -136,24 +179,29 @@ def lpk():
     if request.method.__eq__('POST'):
         try:
             if dao.add_PK(hoten=HoTen, trieuchung=TrieuChung, ngaykham=NgayKham,
-                       chuandoanbenh=ChuanDoanBenh):
+                          chuandoanbenh=ChuanDoanBenh):
                 return jsonify({"message": "Phiếu khám đã được tạo thành công! Vui lòng đến đúng giờ", 'status': 200})
             else:
-                return jsonify({"message": "Phiếu khám không được tạo ", 'status': 200})
+                return jsonify({"message": "Phiếu khám không được tạo ", 'status': 300})
         except Exception as ex:
             return jsonify({"message": str(ex), 'status': 500}), 404
         else:
-            return jsonify({"message": "Phiếu khám đã được tạo thành công! Vui lòng đến đúng giờ", 'status': 200}), 200
+            return jsonify({"message": "Phiếu khám đã được tạo thành công! Vui lòng đến đúng giờ", 'status': 500}), 200
 
 
-@app.route('/doctor')
+@app.route('/danhsachkham')
 def doctor():
-    return render_template('doctor/index.html')
+    return render_template('danhsachkham.html', DanhSachKham=dao.getDSK())
 
 
 @app.route('/findmedicine')
 def findm():
     return render_template('findmedicine.html', Thuoc=dao.get_Thuoc(), DonViThuoc=dao.get_DVT())
+
+
+@app.route("/ctpk")
+def ctpk():
+    return render_template("chitietphieukham.html")
 
 
 @app.route('/hosobenhnhan')
@@ -167,6 +215,16 @@ def result():
     return render_template('result.html')
 
 
+@app.route('/account')
+def acc():
+    return render_template('thongtinND.html')
+
+
+@app.route('/test')
+def thu():
+    return render_template('test.html')
+
+
 @app.route('/logout')
 def process_logout_user():
     logout_user()
@@ -178,9 +236,7 @@ def get_user(user_id):
     return dao.get_user_by_id(user_id)
 
 
-@app.route('/introduce')
-def introduce():
-    return render_template("introduce.html")
+
 
 
 if __name__ == '__main__':

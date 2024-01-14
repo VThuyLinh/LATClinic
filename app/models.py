@@ -25,10 +25,10 @@ class NguoiDung(db.Model, UserMixin):
     password = Column(String(50), nullable=False)
     avatar = Column(String(100),
                     default="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg")
-    VaiTro = Column(Enum(VaiTro), default=VaiTro.NguoiDung)
+    VaiTro = Column(Enum(VaiTro), default=VaiTro.BenhNhan)
 
     def __str__(self):
-        return self.name
+        return self.HoTen
 
 
 class BacSi(NguoiDung):
@@ -44,7 +44,8 @@ class BenhNhan(NguoiDung):
     id2 = relationship('HoaDon', backref='BenhNhan', lazy=True)
     id3 = relationship('HoSoBenhNhan', backref='BenhNhan', lazy=True)
     id4 = relationship('PhieuKham', backref='BenhNhan', lazy=True)
-    id5= relationship('LichKham', backref='datlichkham', lazy=True)
+    id5 = relationship('LichKham', backref='datlichkham', lazy=True)
+
 
 class YTa(NguoiDung):
     id_YTa = Column(Integer, ForeignKey(NguoiDung.id), primary_key=True)
@@ -69,8 +70,6 @@ class DonViThuoc(db.Model):
     chiTietPhieuKham = relationship('ChiTietPhieuKham', backref='DonViThuoc', lazy=True)
 
 
-
-
 class Thuoc(db.Model):
     id_Thuoc = Column(Integer, primary_key=True, autoincrement=True)
     TenThuoc = Column(String(100), nullable=False)
@@ -82,14 +81,16 @@ class Thuoc(db.Model):
     id_DVT = Column(Integer, ForeignKey(DonViThuoc.id_DVT), nullable=False)
     chiTietPhieuKham = relationship('ChiTietPhieuKham', backref='Thuoc', lazy=True)
     id1 = relationship('CapNhatThuoc', backref='Thuoc', lazy=True)
-    tendvt=relationship('DonViThuoc', backref='Thuoc', lazy=True)
+
+    id_DVTBL = Column(Integer, ForeignKey(DonViThuoc.id_DVT), nullable=False)
+    GiaBanLe = Column(Float, nullable=False)
 
 
 class DanhSachKham(db.Model):
     id_DSKham = Column(Integer, primary_key=True, autoincrement=True)
+    NgayLapDSKham = Column(DateTime, nullable=False)
     id_BN = Column(Integer, ForeignKey(BenhNhan.id_BN), nullable=False)
     id_YT = Column(Integer, ForeignKey(YTa.id_YTa), nullable=False)
-    NgayLapPhieuKham = Column(DateTime, nullable=False)
 
 
 class PhieuKham(db.Model):
@@ -108,8 +109,8 @@ class ChiTietPhieuKham(db.Model):
     id_PK = Column(Integer, ForeignKey(PhieuKham.id_PK), nullable=False)
     id_Thuoc = Column(Integer, ForeignKey(Thuoc.id_Thuoc), nullable=False)
     SoLuong = Column(String(300), nullable=False)
-    id_DonVi = Column(Integer, ForeignKey(DonViThuoc.id_DVT), nullable=False)
-    Gia = Column(String(500), nullable=False)
+    id_DVTBL = Column(Integer, ForeignKey(DonViThuoc.id_DVT), nullable=False)
+    GiaThuocBanLe = Column(Float, nullable=False)
 
 
 class CapNhatThuoc(db.Model):
@@ -168,5 +169,7 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
         import hashlib
+
+
 
         db.session.commit()

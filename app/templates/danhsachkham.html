@@ -1,0 +1,32 @@
+{% extends 'layout/base.html'%}
+{% block content%}
+
+<h1 class="text-center text-info">DANH SÁCH KHÁM BỆNH</h1>
+
+<div class="schedule-form">
+    <div class="container mt-3">
+        <table class="table">
+            <tr>
+                <th>STT</th>
+                <th>Tên bệnh nhân</th>
+                <th>Số điện thoại</th>
+                <th>Đăng ký khám</th>
+                <th>Ngày khám</th>
+                <th>Triệu chứng</th>
+            </tr>
+            {% for c in DanhSachKham%}
+            <tr>
+                <td>{{ c.id_DSKham}}</td>
+                <td>{{ c.id_BN}}</td>
+                <td>{{ c.HoTen}}</td>
+                <td>{{ c.username_sdt}}</td>
+              <td>{{ c.NgayLapPhieuKham}}</td>
+                <td>{{ c.TrieuChung}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="container" id="btn">
+        <button type="button" class="btn btn-info" onclick="submit">Xác nhận</button>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'layout/base.html'%}
+{% block content %}
+<form>
+  <div class="row">
+    <div class="col">
+      <button onclick="RaPhieuKham()">click</button>
+      <input type="text" class="form-control" name="ChuoiThuoc">
+    </div>
+    <div class="col">
+      <input type="password" class="form-control" placeholder="Enter password" name="pswd">
+    </div>
+  </div>
+</form>
+
+
+<div id="result"></div>
+
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("lastname", "Smith");
+  // Retrieve
+  document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+} else {
+  document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+
+{% endblock %}

@@ -1,26 +1,52 @@
-<nav class="navbar navbar-expand-sm navbar-dark" id="logo">
-    <div class="container-fluid ">
-        <div class="logo">
-            <img src="https://img.upanh.tv/2024/01/04/2024-01-041890096bac6320c2.png" class="rounded-circle" alt="Logo">
-            <a class="navbar-brand" href="#">LAT CLINIC</a>
-        </div>
-    </div>
-    <div class="text">
-        <p>Chuyên nghiệp, tận tâm, hiện đại</p>
-    </div>
-</nav>
+<nav class="navbar navbar-expand-sm " id="head">
 
-<nav class="navbar navbar-expand-sm ">
+        <div class="navbar-nav ">
+            <div>
+            <ul id="logo">
+                <img src="https://img.upanh.tv/2024/01/12/Screenshot-2024-01-12-010359.png">
+            </ul>
+            </div>
+            <div class="container">
+            <ul id="LAT" >
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><b>LAT</b></a>
+                </li>
+            </ul>
+            <ul id="Clinic" >
+                <li class="nav-item" >
+                    <a class="nav-link" href="#">CLINIC</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+
+    <div class="container"  id="info">
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#"><h1 id="h1f"><i aria-hidden="true" class="fa-solid fa-house-medical"></i>  012.345.6789</h1></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><h1><i aria-hidden="true" class="fa fa-phone"></i>  0983.456.789</h1></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><h1><i aria-hidden="true" class="fa fa-envelope"></i>  latclinic@gmail.com</h1></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#"><h1><i aria-hidden="true" class="fa-solid fa-location-dot"></i> Nhơn Đức, Nhà Bè, TpHCM</h1></a>
+      </li>
+    </ul>
+  </div>
+
+    </nav>
+
+<nav class="navbar navbar-expand-sm " id="menu">
 
     <div class="container-fluid " id="color">
         <!-- Links -->
         <ul class="navbar-nav">
-
             <li class="nav-item">
                 <a class="nav-link" href="/">Trang chủ</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/introduce">Giới thiệu</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/banggia">Bảng giá</a>
@@ -29,6 +55,11 @@
                 <a class="nav-link" href="/dichvu">Dịch vụ</a>
             </li>
             {% if current_user.is_authenticated %}
+            {% if current_user.VaiTro.value == 4%}
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Quản trị</a>
+            </li>
+            {% endif %}
             {% if current_user.VaiTro.value == 1%}
             <li class="nav-item">
                 <a class="nav-link" href="#">Xem thông tin cá nhân </a>
@@ -54,7 +85,7 @@
             {% endif %}
             {% if current_user.VaiTro.value == 2%}
             <li class="nav-item">
-                <a class="nav-link" href="#">Tạo danh sách khám</a>
+                <a class="nav-link" href="/danhsachkham">Tạo danh sách khám</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/bookschedule">Đăng kí khám </a>
@@ -66,23 +97,28 @@
             </li>
             {% endif %}
             {% endif %}
+              {% if current_user.is_authenticated %}
+            <li class="nav-item" id="Xinchao" >
+                <h2><i class="fa-regular fa-hand"></i>Xin chào {{current_user.HoTen}}</h2>
+            </li>
+            <li class="nav-item" id="tt">
+                <a class="new" href="/account"><i class="fa-solid fa-user icon"></i>Thông tin tài khoản</a>
+            </li>
+            <li class="nav-item" id="dx">
+                 <a class="new" href="/logout"><i class="fa-solid fa-right-from-bracket icon"></i>Đăng xuất</a>
+            </li>
+        {% else %}
+             <li class="nav-item" id="tt1">
+                <a class="new" href="/login"><i class="fa-solid fa-door-open"></i>Đăng nhập</a>
+            </li>
+            <li class="nav-item" id="dx1">
+                 <a class="new" href="/register"><i class="fa-solid fa-user-plus icon"></i>Đăng ký</a>
+            </li>
+        {% endif %}
         </ul>
     </div>
-
-    <form class="d-flex ">
-        <input class="form-controll me-2" type="text" placeholder="Search">
-        <button class="btn btn-dark" type="button"><i aria-hidden="true" class="fa-solid fa-magnifying-glass"></i>
-        </button>
-    </form>
-    <div class="col-sm">
-        {% if current_user.is_authenticated %}
-        <p>Xin chào {{current_user.HoTen}}</p>
-        <a class="new" href="/logout"><span class="rounded-pilli nav-link">Đăng xuất</span></a>
-        {% else %}
-        <a class="new" href="/login"><span class="rounded-pilli nav-link ">Đăng Nhập</span></a>
-        <a class="new" href="/register"><span class="rounded-pilli nav-link ">Đăng Ký</span></a>
-        {% endif %}
     </div>
+
 
 
 </nav>

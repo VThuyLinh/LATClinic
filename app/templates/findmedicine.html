@@ -1,6 +1,11 @@
 {% extends 'layout/base.html'%}
 {% block content %}
 <span>
+    <form method="get" action="/">
+        <input class="form-control me-2 " type="text" placeholder="Search" name="key" id="search">
+        <button class="btn btn-primary" type="submit">Search</button>
+           <button class="btn btn-danger" type="submit">x</button>
+      </form>
 <table border="1">
     <tr>
         <th>STT</th>

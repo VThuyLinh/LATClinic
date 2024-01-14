@@ -1,3 +1,7 @@
+____HEADER______
+
+
+
 .service .icon {
     display: inline-block;
     padding: 45px;
@@ -31,9 +35,7 @@ width:5rem
 
 }
 
-#logo {
-   background-color:#D3D3D3
-}
+
 #logo>img{
 width:8rem;
 }
@@ -42,8 +44,8 @@ width:8rem;
     border-radius:50px;
     width:9rem;
     margin:0.5rem;
-    background-color:#FF8C00;
-    color:black;
+    background-color:#36550c;
+    color:#d8d4a6;
     text-align:center;
 }
 .new{
@@ -52,48 +54,9 @@ text-decoration:none;
 .nav-link {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
-    color: black;
     font-size:1.5rem;
 }
-.nameService {
-    color:black;
-    text-decoration:none;
-    margin-left: 3.5rem;
-    margin-top:0.5rem;
-}
 
-.nameServicee {
-    color:black;
-    text-decoration:none;
-    margin-top:0.5rem;
-}
-.nameServicee > a {
-    color:black;
-    text-decoration:none;
-
-}
-.nameServiceee {
-    color:black;
-    text-decoration:none;
-    margin-top:0.5rem;
-}
-.nameServiceee > a {
-    color:black;
-    text-decoration:none;
-    margin-left: 01rem;
-
-}
-.nameServiceeee > a {
-    color:black;
-    text-decoration:none;
-    margin-left: 2.5rem;
-
-}
-.nameService > a{
-   color: black;
-    text-decoration: none;
-
-}
 .card-title{
     text-align:center;
 }

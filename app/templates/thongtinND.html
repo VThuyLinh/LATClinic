@@ -1,0 +1,42 @@
+{% extends 'layout/base.html'%}
+{% block content %}
+<div class="wrapper">
+    <div class="left">
+        <nav class="image-main">
+            <div class="main">
+                <img src="https://img.upanh.tv/2024/01/08/avatar8211c34f9462332c.jpg" alt="user">
+            </div>
+        </nav>
+
+    </div>
+    <div class="right">
+        <div class="user">
+            <h2>THÔNG TIN NGƯỜI DÙNG </h2>
+        </div>
+        <div class="container-nd">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Tên người dùng</th>
+                    <th>Họ tên</th>
+                    <th>Năm sinh</th>
+                    <th>Địa chỉ</th>
+                    <th>Giới tính</th>
+                    <th>Vai trò</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{current_user.username_sdt}}</td>
+                    <td>{{current_user.HoTen}}</td>
+                    <td>{{current_user.NamSinh}}</td>
+                    <td>{{current_user.DiaChi}}</td>
+                    <td>{{current_user.GioiTinh}}</td>
+                    <td>{{current_user.VaiTro}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

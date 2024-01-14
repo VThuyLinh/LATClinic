@@ -1,13 +1,5 @@
 
-function Add() {
 
-let element = document.getElementById('node');
-
-// Vị trí 1: beforeend
-element.insertAdjacentHTML("beforeend", '<td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>');
-
-
-}
 
 
 
@@ -113,6 +105,105 @@ function add_booking(){
 
 
 
+
+function AddThuoc() {
+
+let element = document.getElementById('node');
+let dem = element.querySelectorAll(' tr').length
+let x= `<td id="abc${dem}"><input type="text" value=${dem}></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>`
+
+element.insertAdjacentHTML("beforeend",x);
+
+}
+
+function reset() {
+    localStorage.clear("clickcount");
+}
+
+function laycheck(){
+document.getElementById('action').onclick = function(e){
+                if (this.checked){
+                    alert("Bạn vừa thích freetuts.net");
+                }
+                else{
+                    alert("Bạn vừa bỏ thích freetuts.net");
+                }
+            };
+}
+
+//function valueChange(event){
+//  if (saveCheckbox.checked){
+//    msg.innerText = 'Đã chọn Save';
+//  }else{
+//    msg.innerText = 'Bỏ chọn Save';
+//  }
+//}
+//
+//let saveCheckbox = document.getElementById('saveCheckbox');
+//saveCheckbox.addEventListener('change', valueChange);
+//let msg = document.getElementById('msg');
+
+
+function getThuoctuPK(){
+var str="Ban da chon thuoc:"
+ var x = document.getElementsByName("thuoc");
+ for (var i =0; i< x.length; i++)
+ {
+       if(x[i].checked == true){
+            str += x[i].value + ";";
+       }
+ }
+ console.log(str);
+ }
+
+
+ function RaPhieuKham(){
+ var str= null;
+ var x = document.getElementsByName("thuoc");
+ for (var i =0; i< x.length; i++)
+ {
+       if(x[i].checked == true){
+            str += x[i].value +";"
+       }
+ }
+// document.getElementByName("ChuoiThuoc").value=str;
+console.log(str);
+ }
+
+
+function getThongTin() {
+ var x= document.getElementById("")
+}
+
+
+function hien(){
+  var x = document.getElementById("bangthuoc");
+  var y = document.getElementById("hsbn");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  }
+  else{
+  x.style.display = "none";
+  }
+}
+function hienthi() {
+
+ var y = document.getElementById("hsbn");
+  if (y.style.display === "none") {
+    y.style.display = "block";
+  }
+  else{
+  y.style.display = "none";
+  }
+}
+
+
+
+
+
+
+
+
 function add_PK(){
   fetch('/api/lapphieukham',{
     method: "post",
@@ -121,7 +212,6 @@ function add_PK(){
       "TrieuChung":document.getElementById("TrieuChung").value,
       "ChuanDoanBenh":document.getElementById("LoaiBenh").value,
        "HoTen":document.getElementById("HoTen").value,
-
     }),
     headers:{
     'Content-Type': 'application/json'
@@ -142,10 +232,54 @@ function add_PK(){
   })
 }
 
-
+  function TinhTien() {
+         var x= Number(document.getElementById('n1').value)
+         var y = Number(document.getElementById('n2').value)
+        document.getElementById('tong').value=x+y
+        }
 
 function getDate() {
    var today = new Date();
-   var date = today.toLocaleDateString()
-   document.getElementById("hvn").value = date;
+   var yyyy= today.getFullYear()
+   let mm= today.getMonth()+1
+   let dd = today.getDate();
+   if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+   var fDate = yyyy + '/' + mm + '/' + dd;
+   document.getElementById('hvn').value = fDate;
+
 }
+
+
+
+function getPhieuKham() {
+   document.getElementById('tenthuoc').value= document.getElementById('idThuoc').value
+   document.getElementById('hvn').value = date;
+}
+
+
+
+//-----------Lưu Tạm Thời------------------
+function luuTamThoi(){
+ let tick = document.getElementById("nodee").querySelectorAll(" input[type='checkbox']:checked")
+ let a = document.getElementByName("thuoc").value
+
+ fetch("/api/luutamthoi", {
+  method: "post",
+  body: JSON.stringify({
+   "HoTen": document.getElementById("HoTen")? document.getElementById("HoTen").value : "",
+   "TrieuChung": document.getElementById("TrieuChung")? document.getElementById("TrieuChung").value : "",
+   "LoaiBenh": document.getElementById("LoaiBenh")? document.getElementById("LoaiBenh").value : "",
+   "id": a
+  }), headers: {
+   'Content-Type': 'application/json'
+  }
+ }).then(res => res.json()).then(data => {
+        alert("Lưu thành công");
+        location.reload();
+ })
+}
+
+
+
+
