@@ -169,7 +169,81 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
         import hashlib
+        
+        u = QuanTri(HoTen="Võ Thùy Linh", DiaChi="TpHCM", NamSinh="2003", GioiTinh="Nu", username_sdt="0792366301",
+                    password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                    avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                    VaiTro=VaiTro.QuanTri)
 
+        u1 = QuanTri(HoTen="Nguyễn Dương Ngọc Thảo", DiaChi="Long An", NamSinh="2003", GioiTinh="Nu",
+                     username_sdt="0835073539",
+                     password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                     avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                     VaiTro=VaiTro.QuanTri)
+
+        u2 = QuanTri(HoTen="Nguyễn Vân Anh", DiaChi="TpHCM", NamSinh="2003", GioiTinh="Nu", username_sdt="0932694738",
+                     password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                     avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                     VaiTro=VaiTro.QuanTri)
+
+        u3 = BacSi(HoTen="Nguyễn Tường Lam", DiaChi="TpHCM", NamSinh="1996", GioiTinh="Nu", username_sdt="0987510332",
+                   password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                   avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                   VaiTro=VaiTro.BacSi, HocVi="Ths.Bs Chuyên khoa II", NgayTruc='2023-12-27')
+
+        u4 = BacSi(HoTen="Nguyễn Hải Đăng", DiaChi="TpHCM", NamSinh="1993", GioiTinh="Nam", username_sdt="0367235691",
+                   password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                   avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                   VaiTro=VaiTro.BacSi, HocVi="Bác sĩ đa khoa 2", NgayTruc='2023-12-24')
+
+        u5 = BenhNhan(HoTen="Trần An Khang", DiaChi="TpHCM", NamSinh="2010", GioiTinh="Nam", username_sdt="0375375727",
+                      password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                      avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                      VaiTro=VaiTro.BenhNhan)
+
+        u6 = BenhNhan(HoTen="Hồ Việt Lĩnh", DiaChi="TpHCM", NamSinh="2006", GioiTinh="Nam", username_sdt="0352979178",
+                      password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                      avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                      VaiTro=VaiTro.BenhNhan)
+
+        u7 = BenhNhan(HoTen="Trần Thị Ngọc Mơ", DiaChi="TpHCM", NamSinh="1997", GioiTinh="Nu",
+                      username_sdt="0982356134",
+                      password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                      avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                      VaiTro=VaiTro.BenhNhan)
+
+        u8 = BenhNhan(HoTen="Phạm Trung Nguyên", DiaChi="TpHCM", NamSinh="1999", GioiTinh="Nam",
+                      username_sdt="0827614599",
+                      password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                      avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                      VaiTro=VaiTro.BenhNhan)
+
+        u9 = YTa(HoTen="Nguyễn Ngọc Như Anh", DiaChi="TpHCM", NamSinh="1990", GioiTinh="Nu", username_sdt="0793567289",
+                 password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                 avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                 VaiTro=VaiTro.YTa, NgayTruc='2023-12-26')
+        u10 = ThuNgan(HoTen="Lê Phương Nhi", DiaChi="TpHCM", NamSinh="1994", GioiTinh="Nu",
+                      username_sdt="0872351901",
+                      password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                      avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                      VaiTro=VaiTro.ThuNgan)
+        u11 = ThuNgan(HoTen="Lê Anh Tuấn", DiaChi="TpHCM", NamSinh="1991", GioiTinh="Nam",
+                      username_sdt="0923912088",
+                      password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                      avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                      VaiTro=VaiTro.ThuNgan)
+        u12 = YTa(HoTen="Nguyễn Mai Anh Khuê", DiaChi="TpHCM", NamSinh="1997", GioiTinh="Nu",
+                  username_sdt="0915620018",
+                  password=hashlib.md5("123456".encode("utf-8")).hexdigest(),
+                  avatar="https://res.cloudinary.com/dxxwcby8l/image/upload/v1647056401/ipmsmnxjydrhpo21xrd8.jpg",
+                  VaiTro=VaiTro.YTa, NgayTruc='2023-12-24')
+        db.session.add_all([u, u1, u2, u3, u4, u5, u6, u7, u8, u9, u10, u11, u12])
+        t = DonViThuoc(TenDonVi='Viên')
+        t1 = DonViThuoc(TenDonVi='Chai')
+        t2 = DonViThuoc(TenDonVi='Gói')
+        t3 = DonViThuoc(TenDonVi='Vỉ')
+        t4 = DonViThuoc(TenDonVi='Hộp')
+        db.session.add_all([t, t1, t2, t3, t4])
 
 
         db.session.commit()
