@@ -17,6 +17,22 @@ def Home():
     return render_template('index.html')
 
 
+@app.route("/login1", methods=['get','post'])
+def dnn():
+    err_msg = None
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        vaitro = request.form.get('vaitro')
+        user = dao.auth_user(username=username, password=password)
+        if user:
+            login_user(user=user)
+            next = request.args.get('/')
+            return redirect('/' if next is None else next)
+        else:
+            err_msg = "Sai mật khẩu hoặc sai tên người dùng"
+    return render_template('login1.html', err_msg=err_msg)
+
 @app.route('/login', methods=["get", "post"])
 def process_user_login():
     err_msg = None

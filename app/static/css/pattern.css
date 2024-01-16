@@ -176,6 +176,18 @@ margin-bottom:0;
 letter-spacing:0.6rem;
 margin-left:30rem;
 }
+
+h5{
+font-size:1.5rem;
+color:white;
+background-color:black;
+text-align:center;
+width:30rem;
+padding:0.6rem;
+border-radius:4rem;
+margin-top:2rem;
+margin-left:12rem;
+}
 h4{
 font-size:2rem;
 color:white;
@@ -232,13 +244,114 @@ margin-bottom:2rem;
 }
 td{
 padding:0;
-width:35rem;
-text-align:center;
-}
+width:20rem;
 
+}
+.stt{
+width:7rem;
+}
+.idtt{
+width:8rem;
+}
+.tenbnhh{
+width:15rem;
+}
+.choi{
+width:4rem;
+}
 .scroll-box {
     width:100%;
     height:20rem;
     overflow-y:scroll;
 
+}
+.frame{
+width: 15rem;
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: #dfe0db;
+    color: black;
+    border-radius: 3rem;
+    height: 3rem;
+    margin-top: 1rem;
+    margin-left:10rem;
+}
+
+.framm{
+    width: 45rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: black;
+    border-radius: 3rem;
+    height: 3rem;
+    margin-top: 0.6rem;
+
+}
+.tkthuoc {
+background-color: white;
+color: black;
+width:60rem;
+height:3rem;
+margin-top:4rem;
+margin-left:6rem;
+border-color:black;
+border-width:0.1rem;
+
+}
+.nutt {
+margin-left:0.4rem;
+width:8rem;
+height:3rem;
+font-size:2rem;
+margin-top:3.6rem;
+background-color:#87968f;
+border-radius:1rem;
+border-color:#87968f;
+border-width:0;
+}
+
+.nut {
+margin-left:0.4rem;
+width:4rem;
+height:3rem;
+font-size:2rem;
+margin-top:3.6rem;
+background-color:#c1dca4;
+border-radius:1rem;
+border-color:#87968f;
+border-width:0;
+}
+.btnn{
+    width: 14rem;
+    margin-left: 10rem;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    height: 3rem;
+    background-color: #113254;
+    border-width: 0;
+    color:white;
+    font-size:1.2rem;
+    }
+.right{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: between;
+    flex-wrap: wrap;
+    width: 65%;
+    margin-left: 25%;
+}
+.right {
+    margin-bottom: 10%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    margin-left: 15rem;
+}
+.main >img{
+    width:20rem;
+    margin-top:2rem;
+    border-radius:10rem;
 }

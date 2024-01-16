@@ -1,43 +1,66 @@
 {% extends 'layout/base.html'%}
 {% block content %}
-<form method="get">
+    <h4> Lập phiếu khám</h4>
+    <span style="border: 2px black">
+   <div class="d-flex flex-row ">
+        <div class="p-2 frame"><label>Họ tên bệnh nhân</label></div>
+        <div class="p-2  ">
+            <input class="form-control framm" placeholder="Chọn bệnh nhân" list="browsers" name="browser" id="HoTen">
+            <datalist id="browsers">
+                {% for a in NguoiDung%}
+                {% if a. VaiTro.value== 1 %}
+                     <option value="{{a.HoTen}}">
+                     {%endif%}
+                {% endfor %}
+            </datalist>
+        </div>
+    </div>
+
+
+    <div class="d-flex flex-row ">
+        <div class="p-2 frame">Ngày khám</div>
+        <div class="p-2 "><input id="hvn" name="NgayKham" type=text class="form-control form-control-lg framm"></div>
+    </div>
+
+    <div class="d-flex flex-row ">
+        <div class="p-2 frame ">Triệu chứng</div>
+        <div class="p-2 ">
+            <input id="TrieuChung" type="text" class="form-control form-control-lg framm" placeholder="Triệu chứng">
+        </div>
+    </div>
+
+    <div class="d-flex flex-row ">
+        <div class="p-2 frame">Dự đoán loại bệnh</div>
+        <div class="p-2 ">
+            <input id="LoaiBenh" value="" type="text" class="form-control form-control-lg framm"
+                   placeholder="Dự đoán loại bệnh">
+        </div>
+    </div>
+
+    <div class="d-flex flex-row ">
+        <div class="p-2 frame">Bác sĩ khám bệnh</div>
+        <div class="p-2">
+         <input id="BacSi" type="text" class="form-control form-control-lg framm" value="{{current_user.HoTen}}">
+        </div>
+    </div>
+</span>
+
 <span>
-    <label class="form-label">Họ tên bệnh nhân:</label>
-    <select class="form-select" id="HoTen">
-        {% for a in NguoiDung%}
-        {% if a. VaiTro.value== 1 %}
-        {% if a. HoTen == PhieuKham.HoTen %}
-        <option selected>{{a.HoTen}}</option>
-        {% else%}
-        <option>{{a.HoTen}}</option>
-        {%endif%}
-        {%endif%}
-        {% endfor %}
-    </select>
-   <label class="form-label">Ngày khám:</label>
-    <input id="hvn" name="NgayKham" type=text class="form-control form-control-lg">
-    <label class="form-label">Triệu chứng:</label>
-    <input id="TrieuChung" value="{{PhieuKham.TrieuChung}}" type="text" class="form-control form-control-lg"
-           placeholder="Triệu chứng">
-    <label class="form-label">Dự đoán loại bệnh:</label>
-    <input id="LoaiBenh" value="{{PhieuKham.LoaiBenh}}" type="text" class="form-control form-control-lg"
-           placeholder="Dự đoán loại bệnh">
-
-
-
-    <label class="form-label">Bác sĩ:</label>
-    <input id="BacSi" type="text" class="form-control form-control-lg" value="{{current_user.HoTen}}">
-    </span>
-    <span>
-
-    <form method="get" action="/">
-        <input class="form-control me-2 " type="text" placeholder="Search" name="key" id="search">
-        <button class="btn btn-primary" type="submit">Search</button>
-           <button class="btn btn-danger" type="submit">x</button>
-      </form>
-            <button class="btn btn-primary" onclick="hien()" type="button">Try it</button>
-
-        <div class="scroll-box" id="bangthuoc" style="display:none">
+       <form method="get" class="d-flex">
+         <input class="form-control me-2 tkthuoc " type="text" placeholder="Tìm kiếm thuốc" name="key" >
+          <div class="p-2 ">
+       <button class="nutt" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+             <div class="p-2">
+          <button class="nutt" data-bs-toggle="tooltip" title="Bỏ tìm kiếm" type="submit">x</button>
+        </div>
+    </form>
+     <div class="d-flex flex-row ">
+    <div class="p-2">
+          <button class="nuttt" data-bs-toggle="tooltip" title="ẩn/hiện bảng thuốc onclick="hien()" type="submit"><i class="fa-solid fa-capsules"></i></button>
+    </div>
+     </div>
+    <div class="scroll-box" id="bangthuoc" >
          <table id="node" class="table table-dark table-striped">
         <thead>
         <tr>
@@ -45,42 +68,52 @@
             <th>STT</th>
             <th>Mã thuốc</th>
             <th>Tên thuốc</th>
-            <th>Đơn vị</th>
-
+            <th>Đơn vị thuốc bán lẻ</th>
+            <th>Đơn vị thuốc</th>
 
         </tr>
         </thead>
         <tbody>
         {% for th in Thuoc%}
         <tr>
-             <td><input  type="checkbox" name="thuoc"  value="{{th.id_Thuoc}}"></td>
-            <td>{{loop.index}}</td>
-            <th>{{th.id_Thuoc}}</th>
-            <td>{{th.TenThuoc}}</td>
+             <td class="choi"><input type="checkbox" name="thuoc" value="{{th.id_Thuoc}}"></td>
+            <td class="stt">{{loop.index}}</td>
+            <th class="idtt">{{th.id_Thuoc}}</th>
+            <td class="tenbnhh">{{th.TenThuoc}}</td>
             {% for dv in DonViThuoc %}
             {% if dv.id_DVT == th.id_DVT %}
-            <td>{{th.TenDVT}}</td>
+            <td>{{dv.TenDonVi}}</td>
+            {% endif %}
+            {% if dv.id_DVT == th.id_DVTBL %}
+            <td>{{dv.TenDonVi}}</td>
             {% endif %}
             {% endfor %}
 
         </tr>
         {% endfor%}
-        {{PhieuKham}}
         </tbody>
     </table>
            </div>
-</span>
 
-    <SPAN>
-         <button class="btn btn-primary" onclick="hienthi()" type="button">Try it</button>
-         <form method="get" action="">
-        <input class="form-control me-2 " type="text" placeholder="Search" name="hsbn" id="searchHSBN">
-        <button class="btn btn-secondary" type="submit">Search</button>
-           <button class="btn btn-danger" type="submit">x</button>
-      </form>
+</span>
+<span>
+       <form method="get" class="d-flex">
+        <input class="form-control me-2 tkthuoc " type="text" placeholder="Tìm kiếm hồ sơ bệnh nhân" name="tenbn" >
+          <div class="p-2 ">
+        <button class="nutt" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+            <div class="p-2">
+          <button class="nutt" data-bs-toggle="tooltip" title="Bỏ tìm kiếm" type="submit">x</button>
+        </div>
+    </form>
+     <div class="d-flex flex-row ">
+    <div class="p-2">
+          <button class="nuttt" onclick="hienthi()" data-bs-toggle="tooltip" title="ẩn/hiện bảng HSBN" type="submit"><i class="fa-solid fa-hospital-user"></i></button>
+    </div>
+
+     </div>
      <div class="scroll-box" id="hsbn">
          <table id="nodee" class="table table-dark table-striped">
-        <p>Phiếu khám</p>
         <thead>
         <tr>
             <th>STT</th>
@@ -88,16 +121,15 @@
             <th>Tên bệnh nhân</th>
             <th>Ghi chú</th>
             <th>Bệnh đã từng</th>
-
         </tr>
         </thead>
         <tbody>
         {% for th in HoSoBenhNhan%}
         <tr>
 
-            <td>{{loop.index}}</td>
-            <td>{{th.id_HSBN}}</td>
-            <td>{{th.HoTen}}</td>
+            <td class="stt">{{loop.index}}</td>
+            <td class="idtt">{{th.id_HSBN}}</td>
+            <td class="tenbnhh">{{th.HoTen}}</td>
              <td>{{th.GhiChu}}</td>
             <td>{{th.ChuanDoanBenh}}</td>
         </tr>
@@ -105,29 +137,29 @@
         </tbody>
     </table>
          </div>
-</SPAN>
+
+
+</span>
     <!--<input type="text" value="1">-->
 
-    <button onclick="add_PK()" type="button" class="btnn btn-primary">
+    <button onclick="add_PK()" type="button" class="btnn ">
         Xuất phiếu khám
     </button>
-     <button onclick="getThuoctuPK()" type="button" class="btnn btn-primary">
-        Xuất chi tiết phiếu khám
-    </button>
-    <button onclick="luuTamThoi()" type="button" class="btnn btn-primary">
+     <button onclick="luuTamThoi()" type="button" class="btnn ">
         Lưu tạm thời
     </button>
+    <button onclick="getThuoctuPK()" type="button" class="btnn ">
+        Xuất chi tiết phiếu khám
+    </button>
+
     <div class="alert alert-success success" style="display:none">
-        Đăng kí khám thành công
+        Lập phiếu khám thành công
     </div>
     <div class="alert alert-danger error" style="display:none">
-        Đăng kí khám không thành công
+        Lập phiếu khám không thành công
     </div>
 
 
     </span>
-
-
-</form>
 
 {% endblock%}

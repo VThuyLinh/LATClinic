@@ -1,9 +1,22 @@
 {% extends 'layout/base.html'%}
 {% block content %}
 <span>
-<<div class="scroll-box">
+     <form method="get" class="d-flex">
+        <input class="form-control me-2 tkthuoc " type="text" placeholder="Tìm kiếm hồ sơ bệnh nhân" name="tenbn" >
+          <div class="p-2 ">
+        <button class="nutt"  type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+         <div class="p-2">
+          <button class="nutt" data-bs-toggle="tooltip" title="Bỏ tìm kiếm" type="submit">x</button>
+        </div>
+    </form>
+     <div class="d-flex flex-row ">
+    <div class="p-2">
+          <button data-bs-toggle="tooltip" title="ẩn/hiện bảng thuốc" class="nuttt" onclick="hienthi()" type="submit"><i class="fa-solid fa-hospital-user"></i></button>
+    </div>
+     </div>
+    <div class="scroll-box" id="hsbn">
          <table id="nodee" class="table table-dark table-striped">
-        <p>Phiếu khám</p>
         <thead>
         <tr>
             <th>STT</th>
@@ -18,9 +31,9 @@
         {% for th in HoSoBenhNhan%}
         <tr>
 
-            <td>{{loop.index}}</td>
-            <td>{{th.id_HSBN}}</td>
-            <td>{{th.HoTen}}</td>
+            <td class="stt">{{loop.index}}</td>
+            <td class="idtt">{{th.id_HSBN}}</td>
+            <td class="tenbnhh">{{th.HoTen}}</td>
              <td>{{th.GhiChu}}</td>
             <td>{{th.ChuanDoanBenh}}</td>
         </tr>

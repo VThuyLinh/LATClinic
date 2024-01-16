@@ -2,16 +2,45 @@
 {% block content %}
 <div class="wrapper">
     <div class="left">
-        <nav class="image-main">
+        {% if current_user.VaiTro.value == 1%}
+        <nav class="image-main me-2">
             <div class="main">
-                <img src="https://img.upanh.tv/2024/01/08/avatar8211c34f9462332c.jpg" alt="user">
+                <img src="https://img.upanh.tv/2024/01/16/Screenshot-2024-01-16-144132.png" alt="user">
             </div>
         </nav>
-
+        {% endif %}
+        {% if current_user.VaiTro.value == 2%}
+        <nav class="image-main">
+            <div class="main">
+                <img src="https://img.upanh.tv/2024/01/16/Screenshot-2024-01-16-144544.png" alt="user">
+            </div>
+        </nav>
+        {% endif %}
+        {% if current_user.VaiTro.value == 3%}
+        <nav class="image-main me-2">
+            <div class="main">
+                <img src="https://img.upanh.tv/2024/01/16/imageec28978fe0d9cc79.png" alt="user">
+            </div>
+        </nav>
+        {% endif %}
+        {% if current_user.VaiTro.value == 4%}
+        <nav class="image-main">
+            <div class="main">
+                <img src="https://img.upanh.tv/2024/01/16/image10bbac4db55d35e0.png" alt="user">
+            </div>
+        </nav>
+        {% endif %}
+        {% if current_user.VaiTro.value == 5%}
+        <nav class="image-main">
+            <div class="main">
+                <img src="https://img.upanh.tv/2024/01/16/image5d74c2926ceaaa42.png" alt="user">
+            </div>
+        </nav>
+        {% endif %}
     </div>
     <div class="right">
         <div class="user">
-            <h2>THÔNG TIN NGƯỜI DÙNG </h2>
+            <h5>THÔNG TIN NGƯỜI DÙNG </h5>
         </div>
         <div class="container-nd">
             <table class="table">
@@ -32,7 +61,21 @@
                     <td>{{current_user.NamSinh}}</td>
                     <td>{{current_user.DiaChi}}</td>
                     <td>{{current_user.GioiTinh}}</td>
-                    <td>{{current_user.VaiTro}}</td>
+                    {% if current_user.VaiTro.value == 1%}
+                    <td>Bệnh nhân</td>
+                    {% endif %}
+                    {% if current_user.VaiTro.value == 2%}
+                    <td>Y tá</td>
+                    {% endif %}
+                    {% if current_user.VaiTro.value == 3%}
+                    <td>Bác sĩ</td>
+                    {% endif %}
+                    {% if current_user.VaiTro.value == 4%}
+                    <td>Quản trị</td>
+                    {% endif %}
+                    {% if current_user.VaiTro.value == 1%}
+                    <td>Thu ngân</td>
+                    {% endif %}
                 </tr>
                 </tbody>
             </table>

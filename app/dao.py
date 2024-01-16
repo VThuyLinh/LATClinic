@@ -1,5 +1,3 @@
-import datetime
-
 from app.models import *
 import hashlib
 from app import app, db
@@ -119,13 +117,14 @@ def get_Thuoc(key=None):
     return thuoc.all()
 
 
-def get_HSBN(hsbn=None):
-    hosoBN = (db.session.query(HoSoBenhNhan.id_HSBN,NguoiDung.HoTen,HoSoBenhNhan.GhiChu,PhieuKham.ChuanDoanBenh)
+
+def get_HSBN(tenbn=None):
+    hosoBN = (db.session.query(HoSoBenhNhan.id_HSBN, NguoiDung.HoTen, HoSoBenhNhan.GhiChu, PhieuKham.ChuanDoanBenh)
               .join(NguoiDung, NguoiDung.id.__eq__(HoSoBenhNhan.id_BN))
               .join(PhieuKham, PhieuKham.id_BN.__eq__(HoSoBenhNhan.id_BN))
-              .group_by(HoSoBenhNhan.id_HSBN,NguoiDung.HoTen,HoSoBenhNhan.GhiChu,PhieuKham.ChuanDoanBenh))
-    if hsbn:
-        hosoBN = hosoBN.filter(NguoiDung.HoTen.contains(hsbn))
+              .group_by(HoSoBenhNhan.id_HSBN, NguoiDung.HoTen, HoSoBenhNhan.GhiChu, PhieuKham.ChuanDoanBenh))
+    if tenbn:
+        hosoBN = hosoBN.filter(NguoiDung.HoTen.contains(tenbn))
     return hosoBN.all()
 
 def getDSK():

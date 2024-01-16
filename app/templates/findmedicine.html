@@ -1,34 +1,55 @@
 {% extends 'layout/base.html'%}
 {% block content %}
 <span>
-    <form method="get" action="/">
-        <input class="form-control me-2 " type="text" placeholder="Search" name="key" id="search">
-        <button class="btn btn-primary" type="submit">Search</button>
-           <button class="btn btn-danger" type="submit">x</button>
-      </form>
-<table border="1">
-    <tr>
-        <th>STT</th>
-        <th>Tên thuốc</th>
-        <th>Đơn vị</th>
-        <th>Số lượng thuốc còn lại</th>
-        <th>Cách dùng</th>
-    </tr>
-    {% for c in Thuoc%}
-    <tr>
-        <td>{{c.id_Thuoc}}</td>
-        <td>{{c.TenThuoc}}</td>
-        {%for a in DonViThuoc%}
-        {%if c.id_DVT == a.id_DVT%}
-        <td>{{a.TenDonVi}}</td>
-        {% endif %}
-        {% endfor %}
+    <form method="get" class="d-flex">
+         <input class="form-control me-2 tkthuoc " type="text" placeholder="Tìm kiếm thuốc" name="key" >
+          <div class="p-2 ">
+       <button class="nutt" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+             <div class="p-2">
+          <button class="nutt" data-bs-toggle="tooltip" title="Bỏ tìm kiếm" type="submit">x</button>
+        </div>
+    </form>
+     <div class="d-flex flex-row ">
+    <div class="p-2">
+          <button class="nuttt" data-bs-toggle="tooltip" title="ẩn/hiện bảng HSBN" onclick="hien()" type="submit"><i class="fa-solid fa-capsules"></i></button>
+    </div>
+     </div>
 
 
-        <td>{{c.SoLuong}}</td>
-        <td>{{c.CachDung}}</td>
-    </tr>
-    {% endfor %}
+
+<table id="bangthuoc" class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th>Mã thuốc</th>
+            <th>Tên thuốc</th>
+            <th>Đơn vị thuốc bán lẻ</th>
+            <th>Đơn vị thuốc</th>
+            <th>Cách dùng</th>
+            <th>HSD</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for th in Thuoc%}
+        <tr>
+            <th class="stt">{{th.id_Thuoc}}</th>
+            <td class="tenbnhh">{{th.TenThuoc}}</td>
+            {% for dv in DonViThuoc %}
+            {% if dv.id_DVT == th.id_DVT %}
+            <td>{{dv.TenDonVi}}</td>
+            {% endif %}
+            {% if dv.id_DVT == th.id_DVTBL %}
+            <td>{{dv.TenDonVi}}</td>
+            {% endif %}
+            {% endfor %}
+            <td>{{th.CachDung}}</td>
+            <td>{{th.HSD}}</td>
+        </tr>
+        {% endfor%}
+        </tbody>
+
+
+
 </table>
 </span>
 {% endblock %}
